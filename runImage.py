@@ -3,7 +3,7 @@ import cv2 as cv
 import sys
 
 # Initializing Camera input
-camera = cv.VideoCapture('video.mp4')
+camera = cv.VideoCapture(0)
 
 # Checks if Camera is visible
 if not camera.isOpened():
