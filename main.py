@@ -10,11 +10,17 @@ def screenshot():
     print("Screenshot taken")
 
 
-window = Label(screen, image="")
-window.pack()
+def main():
+    window = Label(screen, image="")
+    window.pack()
 
-screenshot = Button(screen, text="Take Picture", command=screenshot)
-screenshot.pack(side=BOTTOM)
+    screencap = Button(screen, text="Take Picture", command=screenshot)
+    screencap.pack(side=BOTTOM)
 
-screen.mainloop()
+    screen.mainloop()
+
+
+if __name__ == '__main__':
+    main()
+
 quit()
