@@ -1,6 +1,7 @@
 # https://docs.opencv.org/master/dd/d43/tutorial_py_video_display.html
 import cv2 as cv
 import sys
+import main
 
 # Initializing Camera input
 camera = cv.VideoCapture(0)
