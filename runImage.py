@@ -1,9 +1,10 @@
 # https://docs.opencv.org/master/dd/d43/tutorial_py_video_display.html
 import cv2 as cv
-import sys
-import threading
+from tkinter import *
+from PIL import Image, ImageTk
 
 global frame
+global image_from_frame
 
 
 def screenshot():
@@ -15,6 +16,7 @@ def screenshot():
 
 def cameraInit():
     global frame
+    global image_from_frame
     # Initializing Camera input
     camera = cv.VideoCapture(0)
     # Checks if Camera is visible
@@ -27,6 +29,7 @@ def cameraInit():
         ret, frame = camera.read()
 
         if ret:
+            image_from_frame = Image.fromarray(frame)
             # Display the resulting frame
             cv.imshow('Frame', frame)
             # Press Q on keyboard to  exit
