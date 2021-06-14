@@ -3,12 +3,18 @@ import cv2 as cv
 import sys
 import threading
 
+global frame
+
 
 def screenshot():
+    global frame
     print("Screenshot taken")
+
+    cv.imwrite("test.png", frame)
 
 
 def cameraInit():
+    global frame
     # Initializing Camera input
     camera = cv.VideoCapture(0)
     # Checks if Camera is visible
