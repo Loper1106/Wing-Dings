@@ -15,7 +15,7 @@ def main():
     screencap = Button(screen, text="Take Picture", command=lambda: runImage.screenshot())
     screencap.pack(side=BOTTOM)
 
-    # threading.Thread(target=runImage.cameraInit())
+    threading.Thread(target=runImage.cameraInit())
 
     screen.mainloop()
 
