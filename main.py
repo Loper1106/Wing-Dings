@@ -3,6 +3,8 @@ from tkinter import *
 from PIL import Image, ImageTk
 import threading
 
+global frame
+
 
 class Window:
 
@@ -11,20 +13,24 @@ class Window:
         self.screen.title("ChickieWings By: Ben Loper")
         self.screen.geometry("800x800")
 
+        self.window = Label(self.screen, image="")
+        self.window.pack()
+        self.screencap = Button(self.screen, text="Take Picture", command=lambda: runImage.screenshot())
+        self.screencap.pack(side=BOTTOM)
 
-def main(frame):
+
+def main():
+    global frame
+
+    frame = runImage.cameraInit()
     picture = ImageTk.PhotoImage(frame)
-    window = Label(screen.screen, image=picture)
-    window.pack()
+    screen.window["image"] = picture
 
-    screencap = Button(screen.screen, text="Take Picture", command=lambda: runImage.screenshot())
-    screencap.pack(side=BOTTOM)
-
-    # screen.after(0, runImage.cameraInit)
-    window.mainloop()
+    screen.screen.update()
+    return
 
 
 if __name__ == '__main__':
     screen = Window()
-    camera = runImage.cameraInit()
-    main(camera)
+    while 1:
+        main()
