@@ -27,17 +27,19 @@ def cameraInit():
     while camera.isOpened():
         # Capture frame-by-frame
         ret, frame = camera.read()
-
-        if ret:
-            image_from_frame = Image.fromarray(frame)
-            # Display the resulting frame
-            cv.imshow('Frame', frame)
-            # Press Q on keyboard to  exit
-            if cv.waitKey(24) == ord('q'):
-                break
-        # Break the loop
-        else:
-            break
+        frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
+        image_from_frame = Image.fromarray(frame)
+        return image_from_frame
+        # if ret:
+        #     image_from_frame = Image.fromarray(frame)
+        #     # Display the resulting frame
+        #     cv.imshow('Frame', frame)
+        #     # Press Q on keyboard to  exit
+        #     if cv.waitKey(24) == ord('q'):
+        #         break
+        # # Break the loop
+        # else:
+        #     break
 
     camera.release()
     cv.destroyAllWindows()
