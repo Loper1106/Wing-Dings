@@ -3,22 +3,28 @@ from tkinter import *
 from PIL import Image, ImageTk
 import threading
 
-screen = Tk()
-screen.title("ChickieWings By: Ben Loper")
-screen.geometry("800x800")
+
+class Window:
+
+    def __init__(self):
+        self.screen = Tk()
+        self.screen.title("ChickieWings By: Ben Loper")
+        self.screen.geometry("800x800")
 
 
-def main():
-    picture = ImageTk.PhotoImage(runImage.image_from_frame)
-    window = Label(screen, image=picture)
+def main(frame):
+    picture = ImageTk.PhotoImage(frame)
+    window = Label(screen.screen, image=picture)
     window.pack()
 
-    screencap = Button(screen, text="Take Picture", command=lambda: runImage.screenshot())
+    screencap = Button(screen.screen, text="Take Picture", command=lambda: runImage.screenshot())
     screencap.pack(side=BOTTOM)
 
-    screen.mainloop()
+    # screen.after(0, runImage.cameraInit)
+    window.mainloop()
 
 
 if __name__ == '__main__':
-    threading.Thread(target=runImage.cameraInit())
-    threading.Thread(target=main())
+    screen = Window()
+    camera = runImage.cameraInit()
+    main(camera)
