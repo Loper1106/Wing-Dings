@@ -23,8 +23,7 @@ def main():
     global frame
 
     frame = runImage.cameraInit()
-    picture = ImageTk.PhotoImage(frame)
-    screen.window["image"] = picture
+    screen.window["image"] = frame
 
     screen.screen.update()
     return

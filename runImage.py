@@ -19,6 +19,8 @@ def cameraInit():
     global image_from_frame
     # Initializing Camera input
     camera = cv.VideoCapture(0)
+    # print(camera.get(cv.CAP_PROP_FRAME_WIDTH))
+    # print(camera.get(cv.CAP_PROP_FRAME_HEIGHT))
     # Checks if Camera is visible
     if not camera.isOpened():
         print("No camera detected...")
@@ -29,6 +31,10 @@ def cameraInit():
         ret, frame = camera.read()
         frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
         image_from_frame = Image.fromarray(frame)
+        image_from_frame = ImageTk.PhotoImage(image_from_frame)
+
+        camera.release()
+        cv.destroyAllWindows()
         return image_from_frame
         # if ret:
         #     image_from_frame = Image.fromarray(frame)
@@ -41,8 +47,7 @@ def cameraInit():
         # else:
         #     break
 
-    camera.release()
-    cv.destroyAllWindows()
-
+    # camera.release()
+    # cv.destroyAllWindows()
 
 # cameraInit()
