@@ -3,8 +3,6 @@ from tkinter import *
 from PIL import Image, ImageTk
 import threading
 
-global frame
-
 
 class Window:
 
@@ -20,16 +18,16 @@ class Window:
 
 
 def main():
-    global frame
 
-    frame = runImage.cameraInit()
+    screen.screen.after(33, runImage.cameraInit())
+    frame = runImage.image_from_frame
     screen.window["image"] = frame
 
-    screen.screen.update()
-    return
+    screen.screen.after(33, main)
 
 
 if __name__ == '__main__':
     screen = Window()
-    while 1:
-        main()
+
+    main()
+    screen.screen.mainloop()

@@ -24,14 +24,13 @@ def cameraInit():
         print("No camera detected...")
 
     # Read until video is completed
-    while camera.isOpened():
+    if camera.isOpened():
         # Capture frame-by-frame
         ret, frame = camera.read()
         frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
         image_from_frame = Image.fromarray(frame)
         image_from_frame = ImageTk.PhotoImage(image_from_frame)
 
-        return image_from_frame
         # if ret:
         #     image_from_frame = Image.fromarray(frame)
         #     # Display the resulting frame
