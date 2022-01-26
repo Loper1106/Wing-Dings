@@ -1,6 +1,7 @@
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
 from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
-from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateBatch, ImageFileCreateEntry, Region
+from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateBatch, ImageFileCreateEntry, \
+    Region
 from msrest.authentication import ApiKeyCredentials
 import os, time, uuid
 
@@ -14,3 +15,11 @@ credentials = ApiKeyCredentials(in_headers={"Training-key": training_key})
 trainer = CustomVisionTrainingClient(ENDPOINT, credentials)
 prediction_credentials = ApiKeyCredentials(in_headers={"Prediction-key": prediction_key})
 predictor = CustomVisionPredictionClient(ENDPOINT, prediction_credentials)
+
+# Initialize Customer Vision Project
+publish_iteration_name = "classifying Model"
+
+# Create New Project
+print("Creating project")
+project_name = uuid.uuid4()
+project = trainer.create_project(project_name)
