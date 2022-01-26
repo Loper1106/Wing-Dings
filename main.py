@@ -18,7 +18,6 @@ class Window:
 
 
 def main():
-    print("Window Running")
 
     frame = runImage.grabFrame()
     gui.window["image"] = frame
