@@ -18,16 +18,18 @@ class Window:
 
 
 def main():
+    print("Window Running")
 
-    screen.screen.after(33, runImage.cameraInit())
-    frame = runImage.image_from_frame
-    screen.window["image"] = frame
-
-    screen.screen.after(33, main)
+    frame = runImage.grabFrame()
+    gui.window["image"] = frame
+    gui.screen.update()
+    gui.screen.after(0, main)
 
 
 if __name__ == '__main__':
-    screen = Window()
+    gui = Window()
+    runImage.cameraInit()
 
     main()
-    screen.screen.mainloop()
+    gui.screen.mainloop()
+

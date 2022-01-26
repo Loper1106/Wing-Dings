@@ -3,8 +3,9 @@ import cv2 as cv
 from tkinter import *
 from PIL import Image, ImageTk
 
+# Global Variables
+global camera
 global frame
-global image_from_frame
 
 
 def screenshot():
@@ -15,34 +16,22 @@ def screenshot():
 
 
 def cameraInit():
-    global frame
-    global image_from_frame
-    # Initializing Camera input
+    global camera
+    # Initializes Camera
     camera = cv.VideoCapture(0)
-    # Checks if Camera is visible
     if not camera.isOpened():
-        print("No camera detected...")
+        print("No Camera Detected...")
+    else:
+        print("Camera Initiated!")
 
-    # Read until video is completed
+
+def grabFrame():
+    global camera
+    global frame
     if camera.isOpened():
-        # Capture frame-by-frame
+        # Capture Frame-by-frame
         ret, frame = camera.read()
         frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
         image_from_frame = Image.fromarray(frame)
         image_from_frame = ImageTk.PhotoImage(image_from_frame)
-
-        # if ret:
-        #     image_from_frame = Image.fromarray(frame)
-        #     # Display the resulting frame
-        #     cv.imshow('Frame', frame)
-        #     # Press Q on keyboard to  exit
-        #     if cv.waitKey(24) == ord('q'):
-        #         break
-        # # Break the loop
-        # else:
-        #     break
-
-    camera.release()
-    cv.destroyAllWindows()
-
-# cameraInit()
+        return image_from_frame
