@@ -1,4 +1,4 @@
-import runImage
+import runImage, customVision
 from tkinter import *
 from PIL import Image, ImageTk
 import threading
