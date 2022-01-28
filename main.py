@@ -1,7 +1,5 @@
-import runImage, customVision
+import runImage
 from tkinter import *
-from PIL import Image, ImageTk
-import threading
 
 
 class Window:
@@ -9,7 +7,9 @@ class Window:
     def __init__(self):
         self.screen = Tk()
         self.screen.title("ChickieWings By: Ben Loper")
-        self.screen.geometry("800x800")
+        self.screenWidth = 800
+        self.screenHeight = 800
+        self.screen.geometry(f"{self.screenWidth}x{self.screenHeight}")
 
         self.window = Label(self.screen, image="")
         self.window.pack()
@@ -17,18 +17,18 @@ class Window:
         self.screencap.pack(side=BOTTOM)
 
 
-def main():
+def loadGui():
 
     frame = runImage.grabFrame()
     gui.window["image"] = frame
     gui.screen.update()
-    gui.screen.after(0, main)
+    gui.screen.after(0, loadGui)
 
 
 if __name__ == '__main__':
     gui = Window()
     runImage.cameraInit()
 
-    main()
+    loadGui()
     gui.screen.mainloop()
 
