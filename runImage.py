@@ -1,5 +1,6 @@
 # https://docs.opencv.org/master/dd/d43/tutorial_py_video_display.html
 import cv2 as cv
+import os
 from tkinter import *
 from PIL import Image, ImageTk
 
@@ -10,9 +11,10 @@ global frame
 
 def screenshot():
     global frame
-    print("Screenshot taken")
     frame = cv.cvtColor(frame, cv.COLOR_RGB2BGR)
-    cv.imwrite("test.png", frame)
+    path = "ImageClassification"
+    cv.imwrite(os.path.join(path, "test.png"), frame)
+    print("Screenshot taken")
 
 
 def cameraInit():
