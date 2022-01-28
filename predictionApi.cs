@@ -1,0 +1,3 @@
+public class CustomVisionPredictionClient :
+Microsoft.Rest.ServiceClient<Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction.CustomVisionPredictionClient>,
+IDisposable, Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction.ICustomVisionPredictionClient
